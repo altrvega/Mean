@@ -23,7 +23,6 @@ class Mean(object):
     def get_meaning_list(self, word):
         trObj = Translator(word)
         trObj.create_meaning_list()
-        #print trObj.englishMeanings
         return trObj.englishMeanings
 
     def get_synset_list(self, meaning_list):
@@ -31,7 +30,8 @@ class Mean(object):
         for meaning in meaning_list:
             temp_list = WordnetProcess.getSynsets(meaning, pos='NOUN', limit=3)
             for synset in temp_list:
-                synset_list.append(synset)
+                if (synset not in synset_list):
+                    synset_list.append(synset)
         return synset_list
 
 
