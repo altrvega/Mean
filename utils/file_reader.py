@@ -20,6 +20,15 @@ class FileReader(object):
         return word_list
 
     @staticmethod
+    def write_list_to_file(list_obj, word):
+        f = io.open(properties['output_dir'] + word.encode('utf-8') + '.txt', 'w')
+        for obj in list_obj:
+            obj = obj + '\n'
+            obj = unicode(obj)
+            f.write(obj)
+        f.close()
+    
+    @staticmethod
     def write_word_results(object_list):
         """write page information to a file
         not using in here

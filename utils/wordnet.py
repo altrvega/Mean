@@ -35,6 +35,10 @@ class WordnetProcess:
         return synsetsList
 
     @staticmethod
+    def getHypernym(synset):
+        return synset.hypernyms()
+    
+    @staticmethod
     def getSubList(list, pieces):
         newlist = []
         counter = 0
