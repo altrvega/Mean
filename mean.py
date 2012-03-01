@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from utils.file_reader import *
+from utils.file_operations import *
 from utils.translator import *
 from utils.wordnet import *
 
@@ -12,7 +12,7 @@ class Mean(object):
     def __init__(self):
         """
         """
-        word_list = FileReader.get_word_list()
+        word_list = FileOperations.get_word_list()
         for word in word_list:
             word  = word.strip()
             meaning_list = self.get_meaning_list(word)
@@ -23,7 +23,7 @@ class Mean(object):
                 synset_description = self.prepare_synset_description(synset, i)
                 synset_description_list.append(synset_description)
                 i = i + 1
-            FileReader.write_list_to_file(synset_description_list, word)
+            FileOperations.write_list_to_file(synset_description_list, word)
                 
 
     def prepare_synset_description(self, synset, idx):
@@ -36,7 +36,7 @@ class Mean(object):
             hypernyms  =  ['']
             hypernyms2  = ['']
 
-        text = str(idx) + ' ' + str(synset) + ': ' + str(hypernyms[0]) + '=>' + str(hypernyms2[0]) + '...'
+        text = str(idx) + ' ' + str(synset) + ': ' + str(synset.definition) + ' | ' + str(hypernyms[0]) + '=>' + str(hypernyms2[0]) + '...'
         return text
         
             

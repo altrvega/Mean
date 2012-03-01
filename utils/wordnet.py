@@ -4,7 +4,6 @@
 from nltk.corpus import wordnet as wn
         
 class WordnetProcess:
-
     
     @staticmethod    
     def getSynsets(*args, **kwargs):
